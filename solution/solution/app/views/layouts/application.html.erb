@@ -9,6 +9,17 @@
   </head>
 
   <body>
+    <header>
+    <%if !!current_user%>
+    <label><%= current_user.username %> </label>
+    <form action='<%=session_url%>' method='POST'>
+      <input type="hidden" name='authenticity_token' value='<%=form_authenticity_token %>'>
+      <input type='hidden' name='_method' value='delete'>
+      <button id='logout'>Log Out!</button>
+    </form>
+
+
+    </header>
     <%= yield %>
   </body>
 </html>
